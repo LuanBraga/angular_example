@@ -1,5 +1,3 @@
-<p>meu-outro-componente works!</p>
-
 <div [ngSwitch]="myValue">
     <span *ngSwitchCase="1">Valor 1</span>
     <span *ngSwitchCase="2">Valor 2</span>
@@ -12,3 +10,22 @@
         {{ item }}
     </li>
 </ul>
+
+<h1>{{ name }}</h1>
+
+<input type="text" [(ngModel)]="name">
+
+<br><br><br><br>
+
+<select (change)="0" #minhaClasse >
+    <option value="1">Classe 1</option>
+    <option value="2">Classe 2</option>
+    <option value="3">Classe 3</option>
+</select>
+
+<div 
+    [class.classe1]="minhaClasse.value == '1'"
+    [class.classe2]="minhaClasse.value == '2'"
+    [class.classe3]="minhaClasse.value == '3'"
+    [class.classeMaior1]="minhaClasse.value > '1'"
+>Minha Classe</div>

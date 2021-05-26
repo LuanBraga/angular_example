@@ -8,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class MeuOutroComponenteComponent implements OnInit {
 
   myValue = 0;
+
   myList = [1, 2, 3, 4, 5, 6];
+
+  name = "Teste Angular";
 
   constructor() { }
 
