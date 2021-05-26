@@ -1,1 +1,14 @@
 <p>meu-outro-componente works!</p>
+
+<div [ngSwitch]="myValue">
+    <span *ngSwitchCase="1">Valor 1</span>
+    <span *ngSwitchCase="2">Valor 2</span>
+    <span *ngSwitchCase="3">Valor 3</span>
+    <span *ngSwitchCase="0">Valor Padrão</span>
+</div>
+
+<ul>
+    <li *ngFor="let item of myList">
+        {{ item }}
+    </li>
+</ul>
