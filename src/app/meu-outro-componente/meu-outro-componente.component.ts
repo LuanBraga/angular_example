@@ -1,12 +1,7 @@
-import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AlunosService } from '../services/alunos.service';
+import { ProjectsService } from '../services/projects.service';
 
-interface gitHubResponse {
-  incomplete_results: boolean;
-  items: any[];
-  total_count: number;
-}
 
 @Component({
   selector: 'app-meu-outro-componente',
@@ -31,27 +26,20 @@ export class MeuOutroComponenteComponent implements OnInit {
 
   constructor(
     private alunosService: AlunosService,
-    private http: HttpClient
+    private projectService: ProjectsService
   ) {
     this.alunos = this.alunosService.getAlunos();
   }
 
   ngOnInit(): void {
+    this.projectService.projects.subscribe(
+      projects => {
+        this.projects = projects;
+      } 
+    )
   }
 
   getProjects(){
-    if(this.searchText){
-      const url = `https://api.github.com/search/repositories`;
-
-      const params = new HttpParams().set('q', this.searchText);
-      const headers = new HttpHeaders().set('Content-Type', 'text/html');
-      
-      this.http.get<gitHubResponse>(url, {params, headers}).subscribe(
-        response => {
-          this.projects = response.items;
-        }
-      );
-    }
+    this.projectService.getProjects(this.searchText);
   }
-
 }
